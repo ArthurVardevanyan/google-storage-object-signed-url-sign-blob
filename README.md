@@ -63,7 +63,3 @@ In order to run the full suite of Acceptance tests, run `make testacc`.
 make testacc
 ```
 
-```bash
-~/.terraform.d/plugins/terraform.local/local/avgcp/1.0.0/linux_amd64/terraform-provider-avgcp_linux_amd64_v1.0.0
-~/.terraform.d/plugins/terraform.local/local/avgcp/1.0.0/linux_amd64/terraform-provider-avgcp_v1.0.0
-```

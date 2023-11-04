@@ -66,13 +66,13 @@ func (p *avgcpProvider) Configure(ctx context.Context, req provider.ConfigureReq
 
 func (p *avgcpProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		NewExampleResource,
+		NewGcsObjectUrlSignBlobResource,
 	}
 }
 
 func (p *avgcpProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
-		NewExampleDataSource,
+		NewGcsObjectUrlSignBlobDataSource,
 	}
 }
 

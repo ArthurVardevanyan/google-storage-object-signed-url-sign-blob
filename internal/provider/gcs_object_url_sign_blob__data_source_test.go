@@ -9,24 +9,24 @@ import (
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 )
 
-func TestAccExampleDataSource(t *testing.T) {
+func TestAccGcsObjectUrlSignBlobDataSource(t *testing.T) {
 	resource.Test(t, resource.TestCase{
 		PreCheck:                 func() { testAccPreCheck(t) },
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			// Read testing
 			{
-				Config: testAccExampleDataSourceConfig,
+				Config: testAccGcsObjectUrlSignBlobDataSourceConfig,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("data.avgcp_example.test", "signed_url", "example-signed_url"),
+					resource.TestCheckResourceAttr("data.avgcp_gcs_object_url_sign_blob.test", "signed_url", "gcs_object_url_sign_blob-signed_url"),
 				),
 			},
 		},
 	})
 }
 
-const testAccExampleDataSourceConfig = `
-data "avgcp_example" "test" {
+const testAccGcsObjectUrlSignBlobDataSourceConfig = `
+data "avgcp_gcs_object_url_sign_blob" "test" {
   bucket = "example"
   path = "some-value"
 }

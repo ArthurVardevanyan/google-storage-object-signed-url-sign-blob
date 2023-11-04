@@ -7,11 +7,11 @@ terraform {
   }
 }
 
-resource "avgcp_example" "example" {
+resource "avgcp_gcs_object_url_sign_blob" "example" {
   bucket = "some-value"
-  path = "some-value"
+  path   = "some-value"
 }
 
 output "signed_url" {
-  value = avgcp_example.example.signed_url
+  value = avgcp_gcs_object_url_sign_blob.example.signed_url
 }

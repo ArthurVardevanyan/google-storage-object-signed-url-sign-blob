@@ -15,29 +15,29 @@ import (
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
-var _ datasource.DataSource = &ExampleDataSource{}
+var _ datasource.DataSource = &GcsObjectUrlSignBlobDataSource{}
 
-func NewExampleDataSource() datasource.DataSource {
-	return &ExampleDataSource{}
+func NewGcsObjectUrlSignBlobDataSource() datasource.DataSource {
+	return &GcsObjectUrlSignBlobDataSource{}
 }
 
-// ExampleDataSource defines the data source implementation.
-type ExampleDataSource struct {
+// GcsObjectUrlSignBlobDataSource defines the data source implementation.
+type GcsObjectUrlSignBlobDataSource struct {
 	client *http.Client
 }
 
-// ExampleDataSourceModel describes the data source data model.
-type ExampleDataSourceModel struct {
+// GcsObjectUrlSignBlobDataSourceModel describes the data source data model.
+type GcsObjectUrlSignBlobDataSourceModel struct {
 	Bucket    types.String `tfsdk:"bucket"`
 	Path      types.String `tfsdk:"path"`
 	SignedUrl types.String `tfsdk:"signed_url"`
 }
 
-func (d *ExampleDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_example"
+func (d *GcsObjectUrlSignBlobDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_gcs_object_url_sign_blob"
 }
 
-func (d *ExampleDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+func (d *GcsObjectUrlSignBlobDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
 		MarkdownDescription: "Example data source",
@@ -59,7 +59,7 @@ func (d *ExampleDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 	}
 }
 
-func (d *ExampleDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+func (d *GcsObjectUrlSignBlobDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	// Prevent panic if the provider has not been configured.
 	if req.ProviderData == nil {
 		return
@@ -79,8 +79,8 @@ func (d *ExampleDataSource) Configure(ctx context.Context, req datasource.Config
 	d.client = client
 }
 
-func (d *ExampleDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var data ExampleDataSourceModel
+func (d *GcsObjectUrlSignBlobDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data GcsObjectUrlSignBlobDataSourceModel
 
 	// Read Terraform configuration data into the model
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
@@ -99,7 +99,7 @@ func (d *ExampleDataSource) Read(ctx context.Context, req datasource.ReadRequest
 
 	// For the purposes of this example code, hardcoding a response value to
 	// save into the Terraform state.
-	data.SignedUrl = types.StringValue("example-signed_url")
+	data.SignedUrl = types.StringValue("gcs_object_url_sign_blob-signed_url")
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
