@@ -17,8 +17,9 @@ func TestAccGcsObjectUrlSignBlobResource(t *testing.T) {
 		Steps: []resource.TestStep{
 			// Create and Read testing
 			{
-				Config: testAccGcsObjectUrlSignBlobResourceConfig("one", "one"),
+				Config: testAccGcsObjectUrlSignBlobResourceConfig("one", "one", "one"),
 				Check: resource.ComposeAggregateTestCheckFunc(
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "google_access_id", "one"),
 					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "bucket", "one"),
 					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "path", "one"),
 					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "signed_url", "gcs_object_url_sign_blob-signed_url"),
@@ -33,8 +34,9 @@ func TestAccGcsObjectUrlSignBlobResource(t *testing.T) {
 
 			// Update and Read testing
 			{
-				Config: testAccGcsObjectUrlSignBlobResourceConfig("two", "two"),
+				Config: testAccGcsObjectUrlSignBlobResourceConfig("two", "two", "two"),
 				Check: resource.ComposeAggregateTestCheckFunc(
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "google_access_id", "two"),
 					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "bucket", "two"),
 					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "path", "two"),
 				),
@@ -44,9 +46,10 @@ func TestAccGcsObjectUrlSignBlobResource(t *testing.T) {
 	})
 }
 
-func testAccGcsObjectUrlSignBlobResourceConfig(Bucket string, Path string) string {
+func testAccGcsObjectUrlSignBlobResourceConfig(GoogleAccessID string, Bucket string, Path string) string {
 	return fmt.Sprintf(`
 resource "avgcp_gcs_object_url_sign_blob" "test" {
+  google_access_id = %[1]q
   bucket = %[1]q
   path = %[2]q
 }

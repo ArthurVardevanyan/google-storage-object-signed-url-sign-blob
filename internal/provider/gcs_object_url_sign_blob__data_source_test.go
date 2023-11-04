@@ -27,6 +27,7 @@ func TestAccGcsObjectUrlSignBlobDataSource(t *testing.T) {
 
 const testAccGcsObjectUrlSignBlobDataSourceConfig = `
 data "avgcp_gcs_object_url_sign_blob" "test" {
+  google_access_id = "some"
   bucket = "example"
   path = "some-value"
 }

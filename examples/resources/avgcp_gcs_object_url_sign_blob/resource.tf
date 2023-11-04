@@ -8,8 +8,9 @@ terraform {
 }
 
 resource "avgcp_gcs_object_url_sign_blob" "example" {
-  bucket = "some-value"
-  path   = "some-value"
+  google_access_id = "some-value"
+  bucket           = "some-value"
+  path             = "some-value"
 }
 
 output "signed_url" {
