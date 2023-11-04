@@ -34,3 +34,4 @@ website/vendor
 # Keep windows files with windows line endings
 *.winfile eol=crlf
 examples/resources/avgcp_gcs_object_url_sign_blob/.terraform.lock.hcl
+env
