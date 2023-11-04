@@ -46,7 +46,7 @@ func (d *GcsObjectUrlSignBlobDataSource) Schema(ctx context.Context, req datasou
 		Attributes: map[string]schema.Attribute{
 			"google_access_id": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
-				Required:            true,
+				Optional:            true,
 			},
 			"bucket": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",

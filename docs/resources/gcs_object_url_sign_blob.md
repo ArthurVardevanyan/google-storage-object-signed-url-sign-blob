@@ -23,9 +23,9 @@ terraform {
 }
 
 resource "avgcp_gcs_object_url_sign_blob" "example" {
-  bucket           = "some-value"
-  path             = "some-value"
-  google_access_id = "some-value"
+  google_access_id = "tf-avgcp@homelab-X.iam.gserviceaccount.com"
+  bucket           = "terraform_provider_avgcp"
+  path             = "test"
 }
 
 output "signed_url" {
@@ -39,8 +39,11 @@ output "signed_url" {
 ### Required
 
 - `bucket` (String) Example configurable attribute
-- `google_access_id` (String) Example configurable attribute
 - `path` (String) Example configurable attribute
+
+### Optional
+
+- `google_access_id` (String) Example configurable attribute
 
 ### Read-Only
 

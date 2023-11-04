@@ -54,7 +54,7 @@ func (r *GcsObjectUrlSignBlobResource) Schema(ctx context.Context, req resource.
 		Attributes: map[string]schema.Attribute{
 			"google_access_id": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
-				Required:            true,
+				Optional:            true,
 			},
 			"bucket": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
@@ -122,13 +122,16 @@ func (r *GcsObjectUrlSignBlobResource) Create(ctx context.Context, req resource.
 	// the Storage client. This authentication must include a private key or have
 	// iam.serviceAccounts.signBlob permissions.
 	opts := &storage.SignedURLOptions{
-		GoogleAccessID: data.GoogleAccessID.String(),
-		Scheme:         storage.SigningSchemeV4,
-		Method:         "GET",
-		Expires:        time.Now().Add(30 * time.Minute),
+		Scheme:  storage.SigningSchemeV4,
+		Method:  "GET",
+		Expires: time.Now().Add(30 * time.Minute),
 	}
 
-	u, err := client.Bucket(data.Bucket.String()).SignedURL(data.Path.String(), opts)
+	if !data.GoogleAccessID.IsNull() {
+		opts.GoogleAccessID = data.GoogleAccessID.ValueString()
+	}
+
+	u, err := client.Bucket(data.Bucket.ValueString()).SignedURL(data.Path.ValueString(), opts)
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"API Error Creating Resource",
@@ -136,7 +139,6 @@ func (r *GcsObjectUrlSignBlobResource) Create(ctx context.Context, req resource.
 		)
 		return
 	}
-	// u := "gcs_object_url_sign_blob-signed_url"
 
 	// For the purposes of this example code, hardcoding a response value to
 	// save into the Terraform state.

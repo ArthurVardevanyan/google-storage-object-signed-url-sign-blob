@@ -25,8 +25,11 @@ data "avgcp_gcs_object_url_sign_blob" "example" {
 ### Required
 
 - `bucket` (String) Example configurable attribute
-- `google_access_id` (String) Example configurable attribute
 - `path` (String) Example configurable attribute
+
+### Optional
+
+- `google_access_id` (String) Example configurable attribute
 
 ### Read-Only
 

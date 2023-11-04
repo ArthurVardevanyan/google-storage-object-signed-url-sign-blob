@@ -5,6 +5,7 @@ package provider
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
@@ -17,12 +18,12 @@ func TestAccGcsObjectUrlSignBlobResource(t *testing.T) {
 		Steps: []resource.TestStep{
 			// Create and Read testing
 			{
-				Config: testAccGcsObjectUrlSignBlobResourceConfig("one", "one", "one"),
+				Config: testAccGcsObjectUrlSignBlobResourceConfig(os.Getenv("GCP_SERVICE_ACCOUNT"), "terraform_provider_avgcp", "test"),
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "google_access_id", "one"),
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "bucket", "one"),
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "path", "one"),
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "signed_url", "gcs_object_url_sign_blob-signed_url"),
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "google_access_id", os.Getenv("GCP_SERVICE_ACCOUNT")),
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "bucket", "terraform_provider_avgcp"),
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "path", "test"),
+					//resource.TestMatchResourceAttr("avgcp_gcs_object_url_sign_blob.test", "signed_url", &regexp.Regexp{}),
 				), // ImportState testing
 			},
 			{
@@ -34,11 +35,11 @@ func TestAccGcsObjectUrlSignBlobResource(t *testing.T) {
 
 			// Update and Read testing
 			{
-				Config: testAccGcsObjectUrlSignBlobResourceConfig("two", "two", "two"),
+				Config: testAccGcsObjectUrlSignBlobResourceConfig(os.Getenv("GCP_SERVICE_ACCOUNT"), "terraform_provider_avgcp", "test"),
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "google_access_id", "two"),
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "bucket", "two"),
-					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "path", "two"),
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "google_access_id", os.Getenv("GCP_SERVICE_ACCOUNT")),
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "bucket", "terraform_provider_avgcp"),
+					resource.TestCheckResourceAttr("avgcp_gcs_object_url_sign_blob.test", "path", "test"),
 				),
 			},
 			// Delete testing automatically occurs in TestCase
@@ -50,8 +51,8 @@ func testAccGcsObjectUrlSignBlobResourceConfig(GoogleAccessID string, Bucket str
 	return fmt.Sprintf(`
 resource "avgcp_gcs_object_url_sign_blob" "test" {
   google_access_id = %[1]q
-  bucket = %[1]q
-  path = %[2]q
+  bucket = %[2]q
+  path = %[3]q
 }
-`, Bucket, Path)
+`, GoogleAccessID, Bucket, Path)
 }
