@@ -8,6 +8,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"time"
+
+	"cloud.google.com/go/storage"
+
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -98,17 +102,40 @@ func (r *GcsObjectUrlSignBlobResource) Create(ctx context.Context, req resource.
 		return
 	}
 
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create example, got error: %s", err))
-	//     return
-	// }
+	client, err := storage.NewClient(ctx)
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	defer client.Close()
+
+	// Signing a URL requires credentials authorized to sign a URL. You can pass
+	// these in through SignedURLOptions with one of the following options:
+	//    a. a Google service account private key, obtainable from the Google Developers Console
+	//    b. a Google Access ID with iam.serviceAccounts.signBlob permissions
+	//    c. a SignBytes function implementing custom signing.
+	// In this example, none of these options are used, which means the SignedURL
+	// function attempts to use the same authentication that was used to instantiate
+	// the Storage client. This authentication must include a private key or have
+	// iam.serviceAccounts.signBlob permissions.
+	opts := &storage.SignedURLOptions{
+		Scheme:  storage.SigningSchemeV4,
+		Method:  "GET",
+		Expires: time.Now().Add(30 * time.Minute),
+	}
+
+	u, err := client.Bucket(data.Bucket.ValueString()).SignedURL(data.Path.ValueString(), opts)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"API Error Creating Resource",
+			fmt.Sprintf("... details ... %s", err),
+		)
+		return
+	}
 
 	// For the purposes of this example code, hardcoding a response value to
 	// save into the Terraform state.
-	data.SignedUrl = types.StringValue("gcs_object_url_sign_blob-signed_url")
+	data.SignedUrl = types.StringValue(u)
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
