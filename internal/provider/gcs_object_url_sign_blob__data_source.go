@@ -28,9 +28,10 @@ type GcsObjectUrlSignBlobDataSource struct {
 
 // GcsObjectUrlSignBlobDataSourceModel describes the data source data model.
 type GcsObjectUrlSignBlobDataSourceModel struct {
-	Bucket    types.String `tfsdk:"bucket"`
-	Path      types.String `tfsdk:"path"`
-	SignedUrl types.String `tfsdk:"signed_url"`
+	GoogleAccessID types.String `tfsdk:"google_access_id"`
+	Bucket         types.String `tfsdk:"bucket"`
+	Path           types.String `tfsdk:"path"`
+	SignedUrl      types.String `tfsdk:"signed_url"`
 }
 
 func (d *GcsObjectUrlSignBlobDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
@@ -43,13 +44,17 @@ func (d *GcsObjectUrlSignBlobDataSource) Schema(ctx context.Context, req datasou
 		MarkdownDescription: "Example data source",
 
 		Attributes: map[string]schema.Attribute{
+			"google_access_id": schema.StringAttribute{
+				MarkdownDescription: "Example configurable attribute",
+				Required:            true,
+			},
 			"bucket": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
-				Optional:            true,
+				Required:            true,
 			},
 			"path": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
-				Optional:            true,
+				Required:            true,
 			},
 			"signed_url": schema.StringAttribute{
 				MarkdownDescription: "Example identifier",
