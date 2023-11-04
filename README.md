@@ -62,3 +62,8 @@ In order to run the full suite of Acceptance tests, run `make testacc`.
 ```shell
 make testacc
 ```
+
+```bash
+~/.terraform.d/plugins/terraform.local/local/scaffolding/1.0.0/linux_amd64/terraform-provider-scaffolding-framework_linux_amd64_v1.0.0
+~/.terraform.d/plugins/terraform.local/local/scaffolding/1.0.0/linux_amd64/terraform-provider-scaffolding_v1.0.0
+```
