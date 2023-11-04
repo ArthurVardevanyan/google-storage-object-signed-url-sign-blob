@@ -19,13 +19,13 @@ func TestAccExampleResource(t *testing.T) {
 			{
 				Config: testAccExampleResourceConfig("one", "one"),
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("scaffolding_example.test", "bucket", "one"),
-					resource.TestCheckResourceAttr("scaffolding_example.test", "path", "one"),
-					resource.TestCheckResourceAttr("scaffolding_example.test", "signed_url", "example-signed_url"),
+					resource.TestCheckResourceAttr("avgcp_example.test", "bucket", "one"),
+					resource.TestCheckResourceAttr("avgcp_example.test", "path", "one"),
+					resource.TestCheckResourceAttr("avgcp_example.test", "signed_url", "example-signed_url"),
 				), // ImportState testing
 			},
 			{
-				ResourceName:                         "scaffolding_example.test",
+				ResourceName:                         "avgcp_example.test",
 				ImportState:                          true,
 				ImportStateVerify:                    false, // true
 				ImportStateVerifyIdentifierAttribute: "signed_url",
@@ -35,8 +35,8 @@ func TestAccExampleResource(t *testing.T) {
 			{
 				Config: testAccExampleResourceConfig("two", "two"),
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("scaffolding_example.test", "bucket", "two"),
-					resource.TestCheckResourceAttr("scaffolding_example.test", "path", "two"),
+					resource.TestCheckResourceAttr("avgcp_example.test", "bucket", "two"),
+					resource.TestCheckResourceAttr("avgcp_example.test", "path", "two"),
 				),
 			},
 			// Delete testing automatically occurs in TestCase
@@ -46,7 +46,7 @@ func TestAccExampleResource(t *testing.T) {
 
 func testAccExampleResourceConfig(Bucket string, Path string) string {
 	return fmt.Sprintf(`
-resource "scaffolding_example" "test" {
+resource "avgcp_example" "test" {
   bucket = %[1]q
   path = %[2]q
 }

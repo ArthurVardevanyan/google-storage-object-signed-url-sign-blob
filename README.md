@@ -1,6 +1,6 @@
-# Terraform Provider Scaffolding (Terraform Plugin Framework)
+# Terraform Provider avgcp (Terraform Plugin Framework)
 
-_This template repository is built on the [Terraform Plugin Framework](https://github.com/hashicorp/terraform-plugin-framework). The template repository built on the [Terraform Plugin SDK](https://github.com/hashicorp/terraform-plugin-sdk) can be found at [terraform-provider-scaffolding](https://github.com/hashicorp/terraform-provider-scaffolding). See [Which SDK Should I Use?](https://developer.hashicorp.com/terraform/plugin/framework-benefits) in the Terraform documentation for additional information._
+_This template repository is built on the [Terraform Plugin Framework](https://github.com/hashicorp/terraform-plugin-framework). The template repository built on the [Terraform Plugin SDK](https://github.com/hashicorp/terraform-plugin-sdk) can be found at [terraform-provider-avgcp](https://github.com/hashicorp/terraform-provider-avgcp). See [Which SDK Should I Use?](https://developer.hashicorp.com/terraform/plugin/framework-benefits) in the Terraform documentation for additional information._
 
 This repository is a *template* for a [Terraform](https://www.terraform.io) provider. It is intended as a starting point for creating Terraform providers, containing:
 
@@ -64,6 +64,6 @@ make testacc
 ```
 
 ```bash
-~/.terraform.d/plugins/terraform.local/local/scaffolding/1.0.0/linux_amd64/terraform-provider-scaffolding-framework_linux_amd64_v1.0.0
-~/.terraform.d/plugins/terraform.local/local/scaffolding/1.0.0/linux_amd64/terraform-provider-scaffolding_v1.0.0
+~/.terraform.d/plugins/terraform.local/local/avgcp/1.0.0/linux_amd64/terraform-provider-avgcp_linux_amd64_v1.0.0
+~/.terraform.d/plugins/terraform.local/local/avgcp/1.0.0/linux_amd64/terraform-provider-avgcp_v1.0.0
 ```

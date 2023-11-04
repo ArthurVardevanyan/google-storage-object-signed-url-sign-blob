@@ -7,4 +7,4 @@ testacc:
 
 .PHONY: local
 local:
-	go build && mv terraform-provider-scaffolding-framework ~/.terraform.d/plugins/terraform.local/local/scaffolding/1.0.0/linux_amd64/terraform-provider-scaffolding_v1.0.0
+	go build && mv terraform-provider-avgcp ~/.terraform.d/plugins/terraform.local/local/avgcp/1.0.0/linux_amd64/terraform-provider-avgcp_v1.0.0

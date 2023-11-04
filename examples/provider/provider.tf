@@ -1,3 +1,3 @@
-provider "scaffolding" {
+provider "avgcp" {
   # example configuration here
 }

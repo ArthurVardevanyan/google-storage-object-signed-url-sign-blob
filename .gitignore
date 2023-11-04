@@ -33,3 +33,4 @@ website/vendor
 
 # Keep windows files with windows line endings
 *.winfile eol=crlf
+examples/resources/scaffolding_example/.terraform.lock.hcl
