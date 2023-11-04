@@ -14,7 +14,8 @@ Example data source
 
 ```terraform
 data "scaffolding_example" "example" {
-  configurable_attribute = "some-value"
+  bucket = "some-value"
+  path = "some-value"
 }
 ```
 
@@ -23,8 +24,9 @@ data "scaffolding_example" "example" {
 
 ### Optional
 
-- `configurable_attribute` (String) Example configurable attribute
+- `bucket` (String) Example configurable attribute
+- `path` (String) Example configurable attribute
 
 ### Read-Only
 
-- `id` (String) Example identifier
+- `signed_url` (String) Example identifier

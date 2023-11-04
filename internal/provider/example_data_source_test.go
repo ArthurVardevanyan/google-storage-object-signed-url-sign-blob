@@ -18,7 +18,7 @@ func TestAccExampleDataSource(t *testing.T) {
 			{
 				Config: testAccExampleDataSourceConfig,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("data.scaffolding_example.test", "id", "example-id"),
+					resource.TestCheckResourceAttr("data.scaffolding_example.test", "signed_url", "example-signed_url"),
 				),
 			},
 		},
@@ -27,6 +27,7 @@ func TestAccExampleDataSource(t *testing.T) {
 
 const testAccExampleDataSourceConfig = `
 data "scaffolding_example" "test" {
-  configurable_attribute = "example"
+  bucket = "example"
+  path = "some-value"
 }
 `

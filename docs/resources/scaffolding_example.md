@@ -14,7 +14,8 @@ Example resource
 
 ```terraform
 resource "scaffolding_example" "example" {
-  configurable_attribute = "some-value"
+  bucket = "some-value"
+  path = "some-value"
 }
 ```
 
@@ -23,9 +24,9 @@ resource "scaffolding_example" "example" {
 
 ### Optional
 
-- `configurable_attribute` (String) Example configurable attribute
-- `defaulted` (String) Example configurable attribute with default value
+- `bucket` (String) Example configurable attribute
+- `path` (String) Example configurable attribute
 
 ### Read-Only
 
-- `id` (String) Example identifier
+- `signed_url` (String) Example identifier

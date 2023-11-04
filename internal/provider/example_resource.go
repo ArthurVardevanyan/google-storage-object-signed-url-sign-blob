@@ -11,8 +11,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+
+	//"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
@@ -33,9 +34,9 @@ type ExampleResource struct {
 
 // ExampleResourceModel describes the resource data model.
 type ExampleResourceModel struct {
-	ConfigurableAttribute types.String `tfsdk:"configurable_attribute"`
-	Defaulted             types.String `tfsdk:"defaulted"`
-	Id                    types.String `tfsdk:"id"`
+	Bucket    types.String `tfsdk:"bucket"`
+	Path      types.String `tfsdk:"path"`
+	SignedUrl types.String `tfsdk:"signed_url"`
 }
 
 func (r *ExampleResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -48,17 +49,15 @@ func (r *ExampleResource) Schema(ctx context.Context, req resource.SchemaRequest
 		MarkdownDescription: "Example resource",
 
 		Attributes: map[string]schema.Attribute{
-			"configurable_attribute": schema.StringAttribute{
+			"bucket": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
 				Optional:            true,
 			},
-			"defaulted": schema.StringAttribute{
-				MarkdownDescription: "Example configurable attribute with default value",
+			"path": schema.StringAttribute{
+				MarkdownDescription: "Example configurable attribute",
 				Optional:            true,
-				Computed:            true,
-				Default:             stringdefault.StaticString("example value when not configured"),
 			},
-			"id": schema.StringAttribute{
+			"signed_url": schema.StringAttribute{
 				Computed:            true,
 				MarkdownDescription: "Example identifier",
 				PlanModifiers: []planmodifier.String{
@@ -109,7 +108,7 @@ func (r *ExampleResource) Create(ctx context.Context, req resource.CreateRequest
 
 	// For the purposes of this example code, hardcoding a response value to
 	// save into the Terraform state.
-	data.Id = types.StringValue("example-id")
+	data.SignedUrl = types.StringValue("example-signed_url")
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
@@ -183,5 +182,5 @@ func (r *ExampleResource) Delete(ctx context.Context, req resource.DeleteRequest
 }
 
 func (r *ExampleResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
+	resource.ImportStatePassthroughID(ctx, path.Root("signed_url"), req, resp)
 }

@@ -1,3 +1,4 @@
 data "scaffolding_example" "example" {
-  configurable_attribute = "some-value"
+  bucket = "some-value"
+  path = "some-value"
 }

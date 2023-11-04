@@ -28,8 +28,9 @@ type ExampleDataSource struct {
 
 // ExampleDataSourceModel describes the data source data model.
 type ExampleDataSourceModel struct {
-	ConfigurableAttribute types.String `tfsdk:"configurable_attribute"`
-	Id                    types.String `tfsdk:"id"`
+	Bucket    types.String `tfsdk:"bucket"`
+	Path      types.String `tfsdk:"path"`
+	SignedUrl types.String `tfsdk:"signed_url"`
 }
 
 func (d *ExampleDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
@@ -42,11 +43,15 @@ func (d *ExampleDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 		MarkdownDescription: "Example data source",
 
 		Attributes: map[string]schema.Attribute{
-			"configurable_attribute": schema.StringAttribute{
+			"bucket": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
 				Optional:            true,
 			},
-			"id": schema.StringAttribute{
+			"path": schema.StringAttribute{
+				MarkdownDescription: "Example configurable attribute",
+				Optional:            true,
+			},
+			"signed_url": schema.StringAttribute{
 				MarkdownDescription: "Example identifier",
 				Computed:            true,
 			},
@@ -94,7 +99,7 @@ func (d *ExampleDataSource) Read(ctx context.Context, req datasource.ReadRequest
 
 	// For the purposes of this example code, hardcoding a response value to
 	// save into the Terraform state.
-	data.Id = types.StringValue("example-id")
+	data.SignedUrl = types.StringValue("example-signed_url")
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
