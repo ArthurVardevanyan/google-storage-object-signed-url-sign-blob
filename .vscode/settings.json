@@ -47,8 +47,10 @@
         "kustomize",
         "metav",
         "monitoringv",
+        "pipelinesascode",
         "rolebinding",
         "subresource",
+        "tekton",
         "thanos",
         "Tolerations",
         "Vardevanyan"
