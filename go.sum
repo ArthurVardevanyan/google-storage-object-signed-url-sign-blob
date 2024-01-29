@@ -39,7 +39,7 @@ github.com/cloudflare/circl v1.3.3/go.mod h1:5XYMA4rFBvNIrhs50XuiBJ15vF2pZn4nnUK
 github.com/cloudflare/circl v1.3.7 h1:qlCDlTPz2n9fu58M0Nh1J/JzcFpfgkFHHX3O35r5vcU=
 github.com/cloudflare/circl v1.3.7/go.mod h1:sRTcRWXGLrKw6yIGJ+l7amYJFfAXbZG0kBSc8r4zxgA=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
-github.com/cncf/xds/go v0.0.0-20230607035331-e9ce68804cb4 h1:/inchEIKaYC1Akx+H+gqO04wryn5h75LSazbRlnya1k=
+github.com/cncf/xds/go v0.0.0-20231109132714-523115ebc101 h1:7To3pQ+pZo0i3dsWEbinPNFs5gPSBOsJtx3wTT94VBY=
 github.com/cyphar/filepath-securejoin v0.2.4 h1:Ugdm7cg7i6ZK6x3xDF1oEu1nfkyfH53EtKeQYTC3kyg=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
@@ -142,8 +142,8 @@ github.com/hashicorp/terraform-plugin-docs v0.18.0 h1:2bINhzXc+yDeAcafurshCrIjtd
 github.com/hashicorp/terraform-plugin-docs v0.18.0/go.mod h1:iIUfaJpdUmpi+rI42Kgq+63jAjI8aZVTyxp3Bvk9Hg8=
 github.com/hashicorp/terraform-plugin-framework v1.5.0 h1:8kcvqJs/x6QyOFSdeAyEgsenVOUeC/IyKpi2ul4fjTg=
 github.com/hashicorp/terraform-plugin-framework v1.5.0/go.mod h1:6waavirukIlFpVpthbGd2PUNYaFedB0RwW3MDzJ/rtc=
-github.com/hashicorp/terraform-plugin-go v0.20.0 h1:oqvoUlL+2EUbKNsJbIt3zqqZ7wi6lzn4ufkn/UA51xQ=
-github.com/hashicorp/terraform-plugin-go v0.20.0/go.mod h1:Rr8LBdMlY53a3Z/HpP+ZU3/xCDqtKNCkeI9qOyT10QE=
+github.com/hashicorp/terraform-plugin-go v0.21.0 h1:VSjdVQYNDKR0l2pi3vsFK1PdMQrw6vGOshJXMNFeVc0=
+github.com/hashicorp/terraform-plugin-go v0.21.0/go.mod h1:piJp8UmO1uupCvC9/H74l2C6IyKG0rW4FDedIpwW5RQ=
 github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9TFvymaRGZED3FCV0=
 github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwUYLVdlYeamldAHSxjUFADow=
 github.com/hashicorp/terraform-plugin-sdk/v2 v2.30.0 h1:X7vB6vn5tON2b49ILa4W7mFAsndeqJ7bZFOGbVO+0Cc=
@@ -362,8 +362,8 @@ google.golang.org/grpc v1.23.0/go.mod h1:Y5yQAOtifL1yxbo5wqy6BxZv8vAUGQwXBOALyac
 google.golang.org/grpc v1.25.1/go.mod h1:c3i+UQWmh7LiEpx4sFZnkU36qjEYZ0imhYfXVyQciAY=
 google.golang.org/grpc v1.27.0/go.mod h1:qbnxyOmOxrQa7FizSgH+ReBfzJrCY1pSN7KXBS8abTk=
 google.golang.org/grpc v1.33.2/go.mod h1:JMHMWHQWaTccqQQlmk3MJZS+GWXOdAesneDmEnv2fbc=
-google.golang.org/grpc v1.60.1 h1:26+wFr+cNqSGFcOXcabYC0lUVJVRa2Sb2ortSK7VrEU=
-google.golang.org/grpc v1.60.1/go.mod h1:OlCHIeLYqSSsLi6i49B5QGdzaMZK9+M7LXN2FKz4eGM=
+google.golang.org/grpc v1.61.0 h1:TOvOcuXn30kRao+gfcvsebNEa5iZIiLkisYEkf7R7o0=
+google.golang.org/grpc v1.61.0/go.mod h1:VUbo7IFqmF1QtCAstipjG0GIoq49KvMe9+h1jFLBNJs=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=
 google.golang.org/protobuf v0.0.0-20200221191635-4d8936d0db64/go.mod h1:kwYJMbMJ01Woi6D6+Kah6886xMZcty6N08ah7+eCXa0=
 google.golang.org/protobuf v0.0.0-20200228230310-ab0ca4ff8a60/go.mod h1:cfTl7dwQJ+fmap5saPgwCLgHXTUD7jkjRqWcaiX5VyM=
