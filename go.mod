@@ -5,8 +5,8 @@ go 1.20
 require (
 	cloud.google.com/go/storage v1.38.0
 	github.com/hashicorp/terraform-plugin-docs v0.18.0
-	github.com/hashicorp/terraform-plugin-framework v1.5.0
-	github.com/hashicorp/terraform-plugin-go v0.21.0
+	github.com/hashicorp/terraform-plugin-framework v1.6.0
+	github.com/hashicorp/terraform-plugin-go v0.22.0
 	github.com/hashicorp/terraform-plugin-log v0.9.0
 	github.com/hashicorp/terraform-plugin-testing v1.6.0
 )
@@ -97,7 +97,7 @@ require (
 	google.golang.org/genproto v0.0.0-20240125205218-1f4bbc51befe // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240205150955-31a09d347014 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240125205218-1f4bbc51befe // indirect
-	google.golang.org/grpc v1.61.0 // indirect
+	google.golang.org/grpc v1.61.1 // indirect
 	google.golang.org/protobuf v1.32.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
